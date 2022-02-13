@@ -1,0 +1,65 @@
+// Variables
+
+$mobile_size: 375px;
+$desktop_size: 1440px;
+
+$color_orange: hsl(26, 100%, 55%);
+$color_pale_orange: hsl(25, 100%, 94%);
+$color_very_vark_blue: hsl(220, 13%, 13%);
+$color_dark_grayish_blue: hsl(219, 9%, 45%);
+$color_light_grayish_blue: hsl(223, 64%, 98%);
+$color_white: hsl(0, 0%, 100%);
+$color_black: hsl(0, 0%, 0%); // (with 75% opacity for lightbox background)
+
+$font_kumbh_sans: 'Kumbh Sans',
+sans-serif;
+
+$font_size_para: 16px;
+
+@mixin flex($dir: row) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: space-around;
+    align-items: center;
+}
+
+// Styles
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body {
+
+    .header {
+        @include flex();
+        justify-content: space-between;
+        width: 80vw;
+        height: 15vh;
+        background: black;
+        color: white;
+        margin: auto;
+
+        .header-left {
+            @include flex();
+
+            h1 {}
+
+            ul {
+
+                li {
+
+                    a {
+                        color: inherit;
+                    }
+                }
+            }
+        }
+
+        .header-right {}
+    }
+}
