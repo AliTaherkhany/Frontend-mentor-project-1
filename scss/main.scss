@@ -11,6 +11,8 @@ $color_light_grayish_blue: hsl(223, 64%, 98%);
 $color_white: hsl(0, 0%, 100%);
 $color_black: hsl(0, 0%, 0%); // (with 75% opacity for lightbox background)
 
+$color_light_gray: hsl(0, 0%, 61%);
+
 $font_kumbh_sans: 'Kumbh Sans',
 sans-serif;
 
@@ -40,26 +42,97 @@ body {
         justify-content: space-between;
         width: 80vw;
         height: 15vh;
-        background: black;
-        color: white;
         margin: auto;
+        border-bottom: 3px solid $color_light_grayish_blue;
 
         .header-left {
             @include flex();
+            height: 100%;
 
-            h1 {}
+            h1 {
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
 
             ul {
+                @include flex();
+                justify-content: none;
+                position: relative;
+                height: 100%;
+                padding: 0 75px;
 
                 li {
+                    display: inline-block;
+                    margin: 0 10px;
 
                     a {
-                        color: inherit;
+                        color: $color_light_gray;
+                        font-family: $font_kumbh_sans;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            width: 0;
+                            transform: translateX(calc(var(--width) - 1.5 * var(--width)));
+                            height: 3px;
+                            background: $color_orange;
+                            transition: width .18s ease;
+                            border-radius: 1px;
+                        }
+
+                        &.mouseover::before {
+                            width: var(--width);
+                            transform: none;
+                        }
+
+                        &.mouseout::before {
+                            width: 0;
+                            transform: none
+                        }
+
+                        &:hover {
+                            color: darken($color: $color_light_gray, $amount: 9);
+                        }
                     }
                 }
             }
         }
 
-        .header-right {}
+        .header-right {
+            @include flex();
+            height: 100%;
+
+            .cart,
+            .profile {
+                margin: 0 20px;
+            }
+
+            .cart {
+                position: relative;
+                &::after {
+                    @include flex();
+                    display: flex;
+                    content: '0';
+                    position: absolute;
+                    top: -4px;
+                    right: -5px;
+                    width: 20px;
+                    height: 13px;
+                    background: #ff7d1a;
+                    color: white;
+                    border-radius: 15px;
+                    font-family: "Kumbh Sans", sans-serif;
+                    font-size: 11px;
+                }
+            }
+
+            .profile {
+
+                img {
+                    border: 2px solid $color_orange;
+                    border-radius: 50%;
+                }
+            }
+        }
     }
 }
