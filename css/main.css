@@ -90,7 +90,7 @@ body .header .header-left ul li a::before {
   -webkit-transform: translateX(calc(var(--width) - 1.5 * var(--width)));
           transform: translateX(calc(var(--width) - 1.5 * var(--width)));
   height: 3px;
-  background: #ff7d1a;
+  background: #ff9a52;
   -webkit-transition: width .18s ease;
   transition: width .18s ease;
   border-radius: 1px;
@@ -270,158 +270,8 @@ body .header .header-right .cart .wrapper .info-container .check {
 }
 
 body .header .header-right .profile {
-  --border: 2px;
   position: relative;
   height: 60px;
-  padding: var(--border);
-  z-index: 100;
-}
-
-body .header .header-right .profile::before, body .header .header-right .profile::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  border: var(--border) solid #ff7d1a;
-  border-radius: 100px 0 0 100px;
-  border-right: 0;
-  -webkit-transform-origin: right;
-          transform-origin: right;
-  z-index: -10;
-}
-
-body .header .header-right .profile.spin::before {
-  -webkit-animation: spin0 .3s linear forwards;
-          animation: spin0 .3s linear forwards;
-}
-
-@-webkit-keyframes spin0 {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-  }
-}
-
-@keyframes spin0 {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-  }
-}
-
-body .header .header-right .profile.spin::after {
-  -webkit-animation: spin1 .3s linear .3s forwards;
-          animation: spin1 .3s linear .3s forwards;
-}
-
-@-webkit-keyframes spin1 {
-  0% {
-    -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-    z-index: 1;
-  }
-  100% {
-    -webkit-transform: rotateZ(360deg);
-            transform: rotateZ(360deg);
-    z-index: 1;
-  }
-}
-
-@keyframes spin1 {
-  0% {
-    -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-    z-index: 1;
-  }
-  100% {
-    -webkit-transform: rotateZ(360deg);
-            transform: rotateZ(360deg);
-    z-index: 1;
-  }
-}
-
-body .header .header-right .profile.spinOut::before {
-  -webkit-animation: spin2 .39S linear forwards;
-          animation: spin2 .39S linear forwards;
-}
-
-@-webkit-keyframes spin2 {
-  0% {
-    -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-}
-
-@keyframes spin2 {
-  0% {
-    -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-}
-
-body .header .header-right .profile.spinOut::after {
-  -webkit-animation: spin3 .7S linear forwards;
-          animation: spin3 .7S linear forwards;
-}
-
-@-webkit-keyframes spin3 {
-  0% {
-    -webkit-transform: rotateZ(360deg);
-            transform: rotateZ(360deg);
-    z-index: 1;
-  }
-  35% {
-    z-index: 1;
-  }
-  100% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-    z-index: -10;
-  }
-}
-
-@keyframes spin3 {
-  0% {
-    -webkit-transform: rotateZ(360deg);
-            transform: rotateZ(360deg);
-    z-index: 1;
-  }
-  35% {
-    z-index: 1;
-  }
-  100% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-    z-index: -10;
-  }
-}
-
-body .header .header-right .profile span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  z-index: -1;
-  background: white;
 }
 
 body .header .header-right .profile img {
@@ -429,4 +279,29 @@ body .header .header-right .profile img {
   height: 100%;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 1;
+}
+
+body .header .header-right .profile svg {
+  --border: 2.5px;
+  --dis: calc(var(--border) - 2 * var(--border));
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: translate(var(--dis), var(--dis));
+          transform: translate(var(--dis), var(--dis));
+  width: calc(100% + 2 * var(--border));
+  height: calc(100% + 2 * var(--border));
+  z-index: -1;
+}
+
+body .header .header-right .profile svg circle {
+  stroke: #ff9a52;
+  stroke-width: var(--border);
+  -webkit-transform: rotateZ(-90deg);
+          transform: rotateZ(-90deg);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: stroke-dashoffset 0.8s cubic-bezier(0.53, 1.19, 0.82, 1.11);
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.53, 1.19, 0.82, 1.11);
 }

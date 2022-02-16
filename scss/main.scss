@@ -90,7 +90,7 @@ body {
                             width: 0;
                             transform: translateX(calc(var(--width) - 1.5 * var(--width)));
                             height: 3px;
-                            background: $color_orange;
+                            background: darken($color: $color_pale_orange, $amount: 28);
                             transition: width .18s ease;
                             border-radius: 1px;
                         }
@@ -227,109 +227,34 @@ body {
             }
 
             .profile {
-                --border: 2px;
                 position: relative;
                 height: 60px;
-                padding: var(--border);
-                z-index: 100;
-
-                &::before,
-                &::after {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 50%;
-                    height: 100%;
-                    border: var(--border) solid $color_orange;
-                    border-radius: 100px 0 0 100px;
-                    border-right: 0;
-                    transform-origin: right;
-                    z-index: -10;
-                }
-
-                &.spin {
-                    &::before {
-                        animation: spin0 .3s linear forwards;
-
-                        @keyframes spin0 {
-                            0% {
-                                transform: rotateZ(0deg);
-                            }
-
-                            100% {
-                                transform: rotateZ(180deg);
-                            }
-                        }
-                    }
-
-                    &::after {
-                        animation: spin1 .3s linear .3s forwards;
-
-                        @keyframes spin1 {
-                            0% {
-                                transform: rotateZ(180deg);
-                                z-index: 1;
-                            }
-
-                            100% {
-                                transform: rotateZ(360deg);
-                                z-index: 1;
-                            }
-                        }
-                    }
-                }
-
-                &.spinOut {
-                    &::before {
-                        animation: spin2 .39S linear forwards;
-
-                        @keyframes spin2 {
-                            0% {
-                                transform: rotateZ(180deg);
-                            }
-
-                            100% {
-                                transform: rotateZ(0deg);
-                            }
-                        }
-                    }
-
-                    &::after {
-                        animation: spin3 .7S linear forwards;
-
-                        @keyframes spin3 {
-                            0% {
-                                transform: rotateZ(360deg);
-                                z-index: 1;
-                            }
-
-                            35% {
-                                z-index: 1;
-                            }
-
-                            100% {
-                                transform: rotateZ(0deg);
-                                z-index: -10;
-                            }
-                        }
-                    }
-                }
-
-                span {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 50%;
-                    height: 100%;
-                    z-index: -1;
-                    background: $color_white;
-                }
 
                 img {
                     @include fit();
                     border-radius: 50%;
                     cursor: pointer;
+                    z-index: 1;
+                }
+
+                svg {
+                    --border: 2.5px;
+                    --dis: calc(var(--border) - 2 * var(--border));
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transform: translate(var(--dis), var(--dis));
+                    width: calc(100% + 2 * var(--border));
+                    height: calc(100% + 2 * var(--border));
+                    z-index: -1;
+
+                    circle {
+                        stroke: darken($color: $color_pale_orange, $amount: 28);
+                        stroke-width: var(--border);
+                        transform: rotateZ(-90deg);
+                        transform-origin: center;
+                        transition: stroke-dashoffset .8s cubic-bezier(0.53, 1.19, 0.82, 1.11);
+                    }
                 }
             }
         }
